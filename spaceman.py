@@ -25,12 +25,11 @@ def is_word_guessed(secret_word, letters_guessed):
         bool: True only if all the letters of secret_word are in letters_guessed, False otherwise
     '''
     # TODO: Loop through the letters in the secret_word and check if a letter is not in lettersGuessed
-    secret_word = load_word()
-    index = secret_word.len()
-    for index in range(0,index)
-    
+    for letter in secret_word:
+        if letter not in letters_guessed:
+            return False
 
-    pass
+    return True
 
 def get_guessed_word(secret_word, letters_guessed):
     '''
@@ -43,8 +42,13 @@ def get_guessed_word(secret_word, letters_guessed):
     '''
 
     #TODO: Loop through the letters in secret word and build a string that shows the letters that have been guessed correctly so far that are saved in letters_guessed and underscores for the letters that have not been guessed yet
-
-    pass
+    guessedWord = ""
+    for letter in secret_word:
+        if letter == letters_guessed:
+            guessedWord+=letter
+        else
+            guessedWord+= "_"
+    return guessedWord
 
 
 def is_guess_in_word(guess, secret_word):
@@ -88,4 +92,4 @@ def spaceman(secret_word):
 
 #These function calls that will start the game
 secret_word = load_word()
-spaceman(load_word())
+spaceman(secret_word)

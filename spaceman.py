@@ -29,7 +29,8 @@ def is_word_guessed(secret_word, letters_guessed):
         if letter not in letters_guessed:
             return False
 
-    return True
+        else:
+            return True
 
 def get_guessed_word(secret_word, letters_guessed):
     '''
@@ -46,7 +47,7 @@ def get_guessed_word(secret_word, letters_guessed):
     for letter in secret_word:
         if letter == letters_guessed:
             guessedWord+=letter
-        else
+        else:
             guessedWord+= "_"
     return guessedWord
 
@@ -61,30 +62,49 @@ def is_guess_in_word(guess, secret_word):
         bool: True if the guess is in the secret_word, False otherwise
     '''
     #TODO: check if the letter guess is in the secret word
+    if guess not in secret_word:
+        return False
 
-    pass
-
-
+    else:
+        return True
 
 
 def spaceman(secret_word):
+
     '''
     A function that controls the game of spaceman. Will start spaceman in the command line.
     Args:
       secret_word (string): the secret word to guess.
     '''
-
-
+    letters_guessed = []
+    size = len(secret_word)
     #TODO: show the player information about the game according to the project spec
-
+    print("Welcome to Spaceman")
+    print("The word has ", size, "letters")
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
-
+    print("You have 7 chances to guess the letters, please only enter one letter per round")
+    print("**************************")
+    for rounds in range(1,8):
+        letter = input("Enter a letter: ")
+        while len(letter) != 1:
+            print("Please enter only one letter")
+            letter = input("Enter a letter: ")
     #TODO: Check if the guessed letter is in the secret or not and give the player feedback
+        if (is_guess_in_word(letter,secret_word)):
+            print("YOUR GUESS IS IN THE SECRET WORD!!!")
+            letters_guessed.append(letter)
+        else:
+            print("Your guess is not in the secret word")
 
     #TODO: show the guessed word so far
+        print("Your guessed word this far is: ",get_guessed_word(secret_word,letters_guessed))
 
     #TODO: check if the game has been won or lost
+        if is_word_guessed(secret_word, letters_guessed):
+            print("Congrats, you have guessed the secret word!")
+            break
 
+        print("You Lost!")
 
 
 
